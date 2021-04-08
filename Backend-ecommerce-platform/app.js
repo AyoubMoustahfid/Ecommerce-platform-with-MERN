@@ -40,7 +40,7 @@ app.use('/api/category', categoryRouter)
 app.use('/api/product', productRouter)
 app.use('/api/braintree', braintreeRouter)
 app.use('/api/order', orderRouter)
-app.use('/api/ads', adsRouter)
+app.use('/api/adsence', adsRouter)
 
 
 // run server

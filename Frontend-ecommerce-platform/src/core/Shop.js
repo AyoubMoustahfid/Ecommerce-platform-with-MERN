@@ -88,7 +88,7 @@ const Shop = () => {
                        
                         <div className="row mb-5">
                             {productsFiltred.map((product, i) => (
-                            <div key={product._id} className="col-md-4">
+                            <div key={product._id} className="col-md-6">
                                     <Card product={product}></Card> 
                             </div>  
                             ))}

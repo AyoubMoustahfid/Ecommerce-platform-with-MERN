@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
 
-import { incProductCount, decProductCount, removeProduct } from './../actions/cartActions'
+import { incProductCount, decProductCount, removeProduct, convertDH} from './../actions/cartActions'
 
 import Layout from './Layout'
 import ShowImage from './ShowImage'
@@ -40,7 +40,7 @@ function Cart() {
                                    {productsInCart.map((product, index) => (
                                         <tr key={product._id}>
                                             <td width="80px">
-                                                <ShowImage item={product} url="product/photo" className="card-img-top"></ShowImage>
+                                                <ShowImage item={product} url="product/photo" className="card-img-top" height="60px"></ShowImage>
                                             </td>
                                             <td>
                                                 <h5>{product.name}</h5>
@@ -66,8 +66,8 @@ function Cart() {
                                                     </div>
 
                                             </td>
-                                            <td>$ {product.price}</td>
-                                            <td>$ {product.price * product.count}</td>
+                                            <td>${product.price.toString().substr(0, 5)} <button className="btn btn-raised btn-success" onClick={() => dispatch(convertDH(product))}>DH</button></td>
+                                            <td>$ {(product.price * product.count ).toString().substr(0, 5)}</td>
                                             <td className="text-right">
                                                 <button onClick={() => dispatch(removeProduct(product._id))} className="btn btn-sm btn-dark">
                                                   <i className="material-icons">delete</i>

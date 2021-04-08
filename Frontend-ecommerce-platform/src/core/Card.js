@@ -21,16 +21,16 @@ const Card = ({product, showViewBtn = true}) => {
     return (
         <div>
 
-          <div className="card bg-dark text-white mb-2 px-2">
+          <div className="card bg-white text-black  mb-2 px-2">
               <div className="card-header">
                 <h4 className="display-6 text-center">{product.name}</h4> </div>
-               <ShowImage item={product} url="product/photo" className="card-img-top"></ShowImage>
+               <ShowImage item={product} url="product/photo" className="card-img-top" height="300px"></ShowImage>
                 <div className="card-body">
                   <p>{product.description.substring(0, 50)}...</p>
                 
-                  <div className="text-center my-3">
-                     <span style={{fontSize: '20px'}} className="badge badge-info">${product.price}</span> 
-                     <span className="ml-5 badge-pill badge-dark">{product.category.name}</span> 
+                  <div className=" my-3">
+                     <span style={{fontSize: '20px'}} className="badge badge-info ">${product.price}</span> 
+                     <span className="ml-5 badge-pill badge-dark py-2 px-4">{product.category.name}</span> 
 
                   </div>
 

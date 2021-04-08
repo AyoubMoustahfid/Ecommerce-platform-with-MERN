@@ -1,7 +1,8 @@
 const express = require("express")
-const {salam, signup, singin, signout, signinBuyer, validateBuyer} = require('../controllers/authController')
+const {salam, signup, singin, signout, signinBuyer, validateBuyer, validateAdmin, getAllUser, allUser} = require('../controllers/authController')
 const {userSignupValidator} = require('../middlewares/userValidator')
-const {requireSignIn} = require("../middlewares/auth")
+const {requireSignIn, isAuth, isAdmin, isSuperAdmin} = require("../middlewares/auth")
+const {userById} = require('../middlewares/user')
 
 
 const router = express.Router()
@@ -10,8 +11,14 @@ router.get("/",salam)
 router.post("/singnup", userSignupValidator, signup)
 router.post("/singnin", singin)
 router.post("/buyer/singnin", signinBuyer)
-router.put("/validationBuyer", validateBuyer)
+router.put("/validationSeller/:id/:userId", [requireSignIn, isAuth, isAdmin],validateBuyer)
+router.put("/validationAdmin/:id/:userId", [requireSignIn, isAuth, isSuperAdmin], validateAdmin)
+router.get('/all_user/:userId', [requireSignIn, isAuth, isSuperAdmin], getAllUser);
+router.get('/all_user_seller/:userId', [requireSignIn, isAuth, isAdmin], allUser)
+
 router.get("/singnout", signout)
+
+router.param('userId', userById)
 
 
 router.get("/hello", requireSignIn, (req, res) => {

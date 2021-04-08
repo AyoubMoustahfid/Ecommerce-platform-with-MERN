@@ -69,3 +69,17 @@ export const removeProduct = (id) => {
 
 }
 
+export const convertDH = (item) => {
+
+    let items = JSON.parse(localStorage.getItem('cart'));
+    
+    items = items.map(product => product._id === item._id ? {...item, price: product.price / 10} : product)
+
+    localStorage.setItem('cart', JSON.stringify(items));
+
+    return {
+        type: 'CONVERT_DH',
+        payload: items
+    }
+
+}

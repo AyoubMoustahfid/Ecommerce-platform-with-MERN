@@ -45,7 +45,13 @@ const cartReducer = (state = myState, action) => {
                     }
 
             }
-
+            
+            case 'CONVERT_DH' : 
+                    return {
+                        ...state,
+                        products: action.payload,
+                        price: state.price /10
+                    }
             
             default: {
                 return state

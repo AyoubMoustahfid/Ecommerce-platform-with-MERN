@@ -79,37 +79,13 @@ exports.signinBuyer = (req, res) => {
 
 exports.validateBuyer = (req, res) => {
 
-    User.findByIdAndUpdate(req.body.user, {role: 'BUYER'})
-        .then(user => {
+    User.findByIdAndUpdate(req.params.id, {role: 'SELLER'})
+        .exec((err, user) => {
             if(!user){
                 return res.status(404).json({
-                    error: 'User not found with id :' + req.body.user
+                    error: 'User not found with id :' + req.params.id
                 })
             }
-
-            let transporter = nodemailer.createTransport({
-                service: 'gmail',
-                auth: {
-                    user: process.env.EMAIL  , // TODO: your gmail account
-                    pass: process.env.PASSWORD // TODO: your gmail password
-                }
-            });
-            
-            // Step 2
-            let mailOptions = {
-                from: process.env.EMAIL, // TODO: email sender
-                to: 'moustahfidayoub12@gmail.com', // TODO: email receiver
-                subject: 'Nodemailer - Test',
-                text: 'Wooohooo it works!!'
-            };
-            
-            // Step 3
-            transporter.sendMail(mailOptions, (err, data) => {
-                if (err) {
-                    return console.log('Error occurs');
-                }
-                return console.log('Email sent!!!');
-            });
 
             res.json({
                 user
@@ -118,6 +94,55 @@ exports.validateBuyer = (req, res) => {
         })
 }
 
+
+exports.validateAdmin = (req, res) => {
+
+    User.findByIdAndUpdate(req.params.id, {role: 'ADMIN'})
+        .exec((err, user) => {
+            if(!user){
+                return res.status(404).json({
+                    error: 'User not found with id :' + req.params.id
+                })
+            }
+
+            res.json({
+                user
+            })
+
+        })
+}
+
+exports.getAllUser = (req, res) => {
+
+    User.find({role: {$ne: 'SUPER_ADMIN'}}).exec((err, users) => {
+           if(err){
+               return res.status(404).json({
+                   error: "bad request"
+               })
+           }
+
+           res.json({
+               users
+           })
+    })
+}
+
+exports.allUser = (req, res) => {
+
+    // User.find({role:  'SELLER'})
+    User.find({$or : [{role:  'SELLER'},{role:  'USER'}]})
+    .exec((err, users) => {
+           if(err){
+               return res.status(404).json({
+                   error: "bad request"
+               })
+           }
+
+           res.json({
+               users
+           })
+    })
+}
 
 exports.signout = (req, res) => {
     res.clearCookie("token")

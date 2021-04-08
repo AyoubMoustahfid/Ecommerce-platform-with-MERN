@@ -18,8 +18,8 @@ import SuperAdminRouter from './auth/SuperAdminRouter'
 import AddCategory from './admin/category/AddCategory'
 import AddProduct from './admin/product/AddProduct'
 import ListOrders from './admin/order/ListOrders'
+import AddAdsence from "./admin/adsence/AddAdsence"
 import Product from './core/Product'
-import Adsence from './core/Adsence'
 import ValidationSeller from './core/ValidationSeller'
 import ValidationAdmin from './core/ValidationAdmin'
 
@@ -37,8 +37,8 @@ const Routes = () => {
                 <AdminRoute path='/admin/dashboard' exact component={AdminDashboard} />
                 <AdminRoute path='/category/create' exact component={AddCategory} />
                 <AdminRoute path='/admin/order' exact component={ListOrders} />
-                <AdminRoute path='/admin/adsence' exact component={Adsence} />
                 <AdminRoute path='/admin/validation_seller' exact component={ValidationSeller} />
+                <AdminRoute path='/admin/adsence' exact component={AddAdsence} />
 
                 <SuperAdminRouter path='/super_admin/dashboard' exact component={SuperAdminDashboard} />
                 <SuperAdminRouter path='/super_admin/validation_admin' exact component={ValidationAdmin} />
