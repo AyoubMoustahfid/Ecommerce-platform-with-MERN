@@ -1,6 +1,8 @@
 const Product = require("../models/productModel")
 
 
+const User = require('../models/userModel')
+
 exports.decreaseQuantity = (req, res, next) => {
 
     let bulkOps = req.body.products.map(product => {
@@ -23,3 +25,4 @@ exports.decreaseQuantity = (req, res, next) => {
         next()
     })
 }
+

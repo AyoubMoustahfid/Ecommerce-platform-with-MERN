@@ -1,5 +1,5 @@
 const express = require("express")
-const {salam, signup, singin, signout, signinBuyer, validateBuyer, validateAdmin, getAllUser, allUser} = require('../controllers/authController')
+const {salam, signup, singin, signout, signinBuyer, validateBuyer, validateAdmin, getAllUser, allUser, findUser} = require('../controllers/authController')
 const {userSignupValidator} = require('../middlewares/userValidator')
 const {requireSignIn, isAuth, isAdmin, isSuperAdmin} = require("../middlewares/auth")
 const {userById} = require('../middlewares/user')
@@ -15,6 +15,8 @@ router.put("/validationSeller/:id/:userId", [requireSignIn, isAuth, isAdmin],val
 router.put("/validationAdmin/:id/:userId", [requireSignIn, isAuth, isSuperAdmin], validateAdmin)
 router.get('/all_user/:userId', [requireSignIn, isAuth, isSuperAdmin], getAllUser);
 router.get('/all_user_seller/:userId', [requireSignIn, isAuth, isAdmin], allUser)
+
+router.get('/find/:id', findUser)
 
 router.get("/singnout", signout)
 

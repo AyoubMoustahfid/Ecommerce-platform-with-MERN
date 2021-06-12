@@ -52,9 +52,6 @@ exports.createProduct = async (req, res, next) => {
 
     if(user[0].priceTotale < 10 && user[0].productTotal < 10){
 
-        console.log('egergergergrege');
-      
-        console.log(user[0]);
        
         user[0].productTotal += 1;
         product.save( async (err, product) => {
@@ -199,7 +196,7 @@ exports.deleteProduct = (req, res) => {
     product.remove((err, product) => {
         if(err) {
             return res.status(404).json({
-                error: 'Product not Found !'
+                error: 'Product not Found, And not Deleted'
             })
         }
 
@@ -327,3 +324,4 @@ exports.photoProduct = (req, res) => {
         return res.send(data)
     }
 }
+

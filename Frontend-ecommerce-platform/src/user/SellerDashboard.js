@@ -1,14 +1,26 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import Layout from './../core/Layout'
 
 import { isAuthenticated } from './../auth/helpers'
 
+import {API_URL} from './../config'
+
 function SellerDashboard() {
 
-    const { user: { name, email, role } } = isAuthenticated()
+    const { user: { name, email, role, priceTotale, productTotal, _id } } = isAuthenticated()
+   const [seller, setSeller] = useState('')
 
+   useEffect(() => {
+       fetch(`${API_URL}/find/${_id}`, {
+           method: 'GET'
+       }).then(res => res.json())
+         .then(res => {
+             console.log(res.user[0].productTotal);
+             setSeller(res.user[0])
+         })
+   }, [])
 
     const adminInfo = () => {
 
@@ -20,6 +32,8 @@ function SellerDashboard() {
                                 <ul className="list-group list-group-flush">
                                     <li className="list-group-item">{name}</li>
                                     <li className="list-group-item">{email}</li>
+                                    <li className="list-group-item">Price Total :{priceTotale}</li>
+                                    <li className="list-group-item">Product Total : {seller.productTotal}</li>
                                     <li className="list-group-item">{role ? 'Seller' : 'User'}</li>
                                 </ul>
                             </div>

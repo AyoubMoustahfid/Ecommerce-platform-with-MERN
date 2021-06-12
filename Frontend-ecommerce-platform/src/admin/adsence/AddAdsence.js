@@ -17,34 +17,25 @@ function AddAdsence() {
 
 
 
-    const [photo, setPhoto] = useState({
-        photo: ''
-    })
-
-    
-    const [formData, setFormData] = useState(new FormData()); 
-
-
-    const handleChange = (e) => {
-
-       const value = e.target.id === 'photo' ? e.target.files[0] : e.target.value;
-
-       formData.set(e.target.id, value)
-
-       setPhoto({...photo, [e.target.id]: value})
-       
-    }
-
+   const [pricing, setPricing] = useState("");
+   const [picture, setPicture] = useState("");
+   const [startDate, setStartDate] = useState("");
+   const [endDate, setEndDate] = useState("");
 
     const submitAdsence = (e) => {
        
        e.preventDefault();
 
-       fetch(`${API_URL}/adsence/create/${user._id}`, {
+       const formData = new FormData();
+       formData.append("picture", picture);
+       formData.append("pricing", pricing);
+       formData.append("startDate", startDate);
+       formData.append("endDate", endDate);
+
+       fetch(`${API_URL}/adsence/add`, {
            method: "POST",
            headers: {
-               "Accept": "application/json",
-               "Authorization": `Bearer ${token}`
+               "Accept": "application/json"
            },
 
            body: formData
@@ -61,16 +52,7 @@ function AddAdsence() {
                    positionClass: "toast-bottom-left",
                })
 
-               setPhoto({
-                   photo: ''
-               })
-                
-               
-               setFormData(new FormData())
-              
-
-              
-
+             
            }
 
        })
@@ -93,13 +75,24 @@ function AddAdsence() {
                       <form onSubmit={submitAdsence}>
 
                        <div className="form-group">
-                           <label htmlFor="photo">Photo Adsence</label>
-                           <input onChange={handleChange} id="photo" type="file" className="form-control-file" name="photo"  />
+                           <label htmlFor="picture">Photo Adsence</label>
+                           <input  id="picture" onChange={(e) => setPicture(e.target.files[0])}  type="file" className="form-control-file" name="picture"  />
                        </div>
 
-                          <div className="col-12">
-                          { JSON.stringify(photo) }
-                          </div>
+                       <div className="form-group">
+                            <label htmlFor="pricing">Pricing Adsence</label>
+                            <input  id="pricing" onChange={(e) => setPricing(e.target.value)}  value={pricing} type="number" className="form-control-file" name="pricing"  />
+                       </div>
+
+                       <div className="form-group">
+                            <label htmlFor="startDate">Date Start</label>
+                            <input  id="startDate" onChange={(e) => setStartDate(e.target.value)} value={startDate} type="date" className="form-control-file" name="startDate"  />
+                       </div>
+
+                       <div className="form-group">
+                            <label htmlFor="endDate">Date End</label>
+                            <input id="endDate"  onChange={(e) => setEndDate(e.target.value)}  value={endDate} type="date" className="form-control-file" name="endDate"  />
+                       </div>
 
                           <button className="my-5 btn-block btn btn-outline-primary">New Product</button>
                       </form>

@@ -57,7 +57,7 @@ function ValidationSeller() {
         <div>
         <Layout title="Validation Admin Page" 
         description="Node React Ecommerce App" 
-        className="container-fluid">
+        className="container">
 
         <table className="table table-bordered">
         <thead>

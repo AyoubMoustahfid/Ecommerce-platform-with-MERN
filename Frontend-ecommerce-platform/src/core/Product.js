@@ -26,7 +26,7 @@ const Product = (props) => {
            {product && product.description && (
                 <Layout 
                 title={product.name}
-                description={product.description.substring(0, 100)}
+                description={product.description}
                 className="container"
                 >
                 

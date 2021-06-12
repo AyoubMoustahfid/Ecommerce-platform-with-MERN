@@ -7,7 +7,8 @@ const {createProduct,
        allProducts, 
        relatedProduct,
        searchProduct,
-       photoProduct
+       photoProduct,
+       findProductBySeller
       } = require('../controllers/productController')
 const {userById} = require("../middlewares/user")
 const {requireSignIn, isAuth, isAdmin, isBuyer} = require("../middlewares/auth")

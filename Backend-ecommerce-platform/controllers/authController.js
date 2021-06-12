@@ -40,10 +40,10 @@ exports.singin = (req, res) => {
 
         res.cookie("token", token, {expire: new Date() + 902600})
 
-        const {_id, name, email, role} = user;
+        const {_id, name, email, role, productTotal, priceTotale} = user;
 
         res.json({
-            token, user: {_id, name, email, role}
+            token, user: {_id, name, email, role, productTotal, priceTotale}
         })
     })
 }
@@ -149,5 +149,19 @@ exports.signout = (req, res) => {
 
     res.json({
         message : "User is Signout"
+    })
+}
+
+exports.findUser = (req, res) => {
+    let param = req.params.id
+    User.find({_id: param}).exec((err, user) => {
+        if(err || !user){
+            return res.status(404).json({
+                error: 'User not found !'
+            })
+        }
+        res.json({
+            user
+        })
     })
 }

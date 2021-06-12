@@ -13,7 +13,7 @@ import "toastr/build/toastr.css";
 function AddProduct() {
 
    const { user, token } = isAuthenticated();
-
+   
 
 
 
@@ -52,7 +52,6 @@ function AddProduct() {
 
     }
 
-    
     const handleChange = (e) => {
 
        const value = e.target.id === 'photo' ? e.target.files[0] : e.target.value;
@@ -84,8 +83,15 @@ function AddProduct() {
                toastr.warning(res.error, 'Please Check form !', {
                    positionClass: "toast-bottom-left",
                })
-           }
-           else {
+           }else if(user.priceTotale < 10 && user.productTotal == 10 ){
+            toastr.warning('You have 10 product added', 'Please Check Your price Total !', {
+                positionClass: "toast-bottom-left",
+            })
+           }else if(user.priceTotale < 20 && user.productTotal == 20 ){
+            toastr.warning('You have 20 product added', 'Please Check Your price Total !', {
+                positionClass: "toast-bottom-left",
+            })
+           } else {
                toastr.success(`Product ${product.name} created`, 'new Product', {
                    positionClass: "toast-bottom-left",
                })
@@ -104,7 +110,7 @@ function AddProduct() {
                
                setFormData(new FormData())
               
-
+               
               
 
            }
@@ -130,7 +136,7 @@ function AddProduct() {
 
                        <div className="form-group">
                            <label htmlFor="photo">Photo product</label>
-                           <input onChange={handleChange} id="photo" type="file" className="form-control-file" name="photo"  />
+                           <input onChange={handleChange} id="photo" type="file" className="form-control" name="photo"  />
                        </div>
 
                            <div className="form-group">
@@ -161,7 +167,7 @@ function AddProduct() {
                            <div className="form-group">
                            <label htmlFor="category">category</label>
                                <select value={product.category} onChange={handleChange} name="category" id="category" className="form-control">
-                                   <option value="0">Select a category</option>
+                            <option value="0">Select a category</option>
                                    { categories && categories.map((category, i) => (
                                        <option key={i} value={category._id}>{category.name}</option>
                                    )) }
@@ -176,9 +182,7 @@ function AddProduct() {
                                </select>
                            </div>
 
-                          <div className="col-12">
-                          { JSON.stringify(product) }
-                          </div>
+                   
 
                           <button className="my-5 btn-block btn btn-outline-primary">New Product</button>
                       </form>
