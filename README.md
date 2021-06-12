@@ -118,5 +118,115 @@ exports.validateAdmin = (req, res) => {
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id` && `userId`     | `string` | **Required**. Id and userId of item to fetch |
+| `id` && `userId`     | `string` | **Required**. Id and userId and userId of item to fetch |
+
+#### Get all user  
+
+```http
+  GET /api/all_user/${:userId}
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `uderId` | `string` | **Required**. userId and userId of item to fetch |
+
+#### Get all user just role = "SELLER"
+
+```http
+  GET /api/all_user_seller/${:userId}
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `uderId` | `string` | **Required**. userId of item to fetch |
+
+#### Get: find user by Id
+
+```http
+  GET /api/find/${:id}
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `string` | **Required**. Id and userId of item to fetch |
+
+
+#### Get Déconnexion
+
+```http
+  GET /api/signout
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. Your API key |
+
+## API Reference ( Adsence ) /api/adsence
+
+#### Get all adsence
+
+```http
+  GET /api/adsence/getAll
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. Your API key |
+
+#### Get all adsence by limit
+
+```http
+  GET /api/adsence/get
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. Your API key |
+
+#### Create New Adsence
+
+```http
+  POST /api/adsence/add
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. Your API key |
+
+#### Delete Adsence by Id
+
+```http
+  DELETE /api/adsence/delete/${id}
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `string` | **Required**. Id of item to fetch |
+
+## API Reference ( Braintree Payment Method ) /api/braintree
+
+[Documentation](https://www.braintreepayments.com/)
+
+
+#### Get Token braintree
+
+```http
+  POST /api/braintree/getToken/${:userId}
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `userId` | `string` | **Required**. userId of item to fetch |
+
+#### Create purchase
+
+```http
+  POST /api/braintree/purchase/${:userId}
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `userId` | `string` | **Required**. userId of item to fetch |
+
+
 
