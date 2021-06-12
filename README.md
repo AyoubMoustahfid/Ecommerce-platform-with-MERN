@@ -211,7 +211,7 @@ exports.validateAdmin = (req, res) => {
 #### Get Token braintree
 
 ```http
-  POST /api/braintree/getToken/${:userId}
+  GET /api/braintree/getToken/${:userId}
 ```
 
 | Parameter | Type     | Description                |
