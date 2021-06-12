@@ -2,21 +2,32 @@
 
 =========================== Back End : ===========================
 
-## Deployment
+## Run Locally
 
-Install my-project with npm
+Clone the project
 
-1- install node_modules
+```bash
+  git clone https://github.com/AyoubMoustahfid/Ecommerce-platform-with-MERN
+```
+
+Go to the project directory
+
+```bash
+  cd Ecommerce-platform-with-MERN
+```
+
+Install dependencies
 
 ```bash
   npm install
 ```
 
-2- Run server
+Start the server
 
 ```bash
-  nodemon app 
+  nodemon app
 ```
+
 
 
 ## API Reference ( Authentification ) /api
