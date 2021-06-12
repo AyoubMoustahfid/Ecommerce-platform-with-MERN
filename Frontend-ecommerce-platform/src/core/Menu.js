@@ -66,7 +66,7 @@ const Menu = (props) => {
                     <li className="nav-item active">
                         <Link style={isActive(props.history, '/shop')} className="nav-link" to="/shop">Shop </Link>
                     </li>
-                    {isAuthenticated().user.role === 'SELLER' && (
+                    {isAuthenticated() && isAuthenticated().user.role === 'SELLER' && (
                         <li className="nav-item active">
                         <Link 
                             style={isActive(props.history, '/dashboard')} 
@@ -78,7 +78,7 @@ const Menu = (props) => {
                     </li>
                     )}
                     
-                    {isAuthenticated().user.role === 'ADMIN' && (
+                    {isAuthenticated() && isAuthenticated().user.role === 'ADMIN' && (
                         
                         <li className="nav-item active">
                         <Link 
@@ -90,7 +90,7 @@ const Menu = (props) => {
                         </Link>
                     </li>
                     )}
-                {isAuthenticated().user.role === 'SUPER_ADMIN' && (
+                {isAuthenticated() && isAuthenticated().user.role === 'SUPER_ADMIN' && (
                     <li className="nav-item active">
                     <Link 
                         style={isActive(props.history, '/dashboard')} 
