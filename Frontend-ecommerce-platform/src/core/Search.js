@@ -6,7 +6,7 @@ const Search = () => {
 
     const [categories, setCategories] = useState([])
     const [products, setProducts] = useState([])
-    const [result, setResult] = useState('')
+    // const [result, setResult] = useState('')
     const [searchData, setSearchData] = useState({search: '', category: ''})
 
     const handleChange = (e) => {

@@ -4,8 +4,6 @@ import axios from 'axios';
 
 import {API_URL} from './../config'
 
-import toastr from 'toastr';
-import "toastr/build/toastr.css";
 
 const Layout = ({ title, description, className, children }) => {
 
@@ -28,21 +26,21 @@ const Layout = ({ title, description, className, children }) => {
     
     return (
         <div>
-            <div className="jumbotron mt-5">
+            <div className="jumbotron ">
                 <h1 className="display-4">{title}</h1>
                 <p className="lead">{description}</p>
             </div>
             <div className="container">
               <div className="row">
                  <div className="col-12">
-                 <Carousel>
-                 {adsence.map(ads => {
-                         return <div className="carousel-ads-container-fluid" key={ads._id}>
-                             <img alt="" src={`/uploads/${ads.picture}`} height="300px" width="100%"/>
-                         </div>
-                     })
-                 }
-             </Carousel>
+                    <Carousel>
+                        {adsence && adsence.map(ads => {
+                                return <div className="carousel-ads-container-fluid" key={ads._id}>
+                                    <img alt="" src={`/uploads/${ads.picture}`} height="300px" width="100%"/>
+                                </div>
+                            })
+                        }
+                    </Carousel>
                  </div>
               </div>
             </div>

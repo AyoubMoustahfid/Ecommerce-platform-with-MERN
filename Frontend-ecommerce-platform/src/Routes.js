@@ -18,7 +18,9 @@ import SuperAdminRouter from './auth/SuperAdminRouter'
 
 
 import AddCategory from './admin/category/AddCategory'
+import GestionCategory from './admin/category/GestionCategory'
 import AddProduct from './admin/product/AddProduct'
+import GestionProduct from './admin/product/GestionProduct'
 import ListOrders from './admin/order/ListOrders'
 import AddAdsence from "./admin/adsence/AddAdsence"
 import Product from './core/Product'
@@ -38,6 +40,7 @@ const Routes = () => {
 
                 <AdminRoute path='/admin/dashboard' exact component={AdminDashboard} />
                 <AdminRoute path='/category/create' exact component={AddCategory} />
+                <AdminRoute path='/category/gestion' exact component={GestionCategory} />
                 <AdminRoute path='/admin/order' exact component={ListOrders} />
                 <AdminRoute path='/admin/validation_seller' exact component={ValidationSeller} />
                 <AdminRoute path='/admin/adsence' exact component={AddAdsence} />
@@ -47,6 +50,7 @@ const Routes = () => {
 
                 <SellerRouter path='/seller/dashboard' exact component={SellerDashboard} />
                 <SellerRouter path='/product/create' exact component={AddProduct} />
+                <SellerRouter path='/product/gestion' exact component={GestionProduct} />
 
                 <Route path='/signin' exact component={Signin} />
                 <Route path='/signup' exact component={Signup} />

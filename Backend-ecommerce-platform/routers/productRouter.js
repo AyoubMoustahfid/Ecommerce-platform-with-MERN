@@ -21,8 +21,8 @@ router.get('/:productId', showProduct)
 router.get('/photo/:productId', photoProduct)
 router.post('/search', searchProduct)
 router.post('/create/:userId', [requireSignIn, isAuth, isBuyer] , createProduct)
-router.delete('/:productId/:userId', [requireSignIn, isAuth, isAdmin] ,deleteProduct )
-router.put('/:productId/:userId', [requireSignIn, isAuth, isAdmin] , updateProduct )
+router.delete('/delete/:productId/:userId', [requireSignIn, isAuth, isBuyer] ,deleteProduct )
+router.put('/update/:productId/:userId', [requireSignIn, isAuth, isBuyer] , updateProduct )
 
 
 router.param("userId", userById)

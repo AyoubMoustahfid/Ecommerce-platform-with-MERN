@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Layout from './../../core/Layout'
 
 import { API_URL } from './../../config'
 
-import { isAuthenticated } from './../../auth/helpers'
+// import { isAuthenticated } from './../../auth/helpers'
 
 import toastr from 'toastr';
 import "toastr/build/toastr.css";
@@ -12,7 +12,7 @@ import "toastr/build/toastr.css";
 
 function AddAdsence() {
 
-   const { user, token } = isAuthenticated();
+//    const { user, token } = isAuthenticated();
 
 
 

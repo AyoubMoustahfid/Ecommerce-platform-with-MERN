@@ -137,12 +137,11 @@ exports.updateProduct = (req, res) => {
             name: Joi.string().required(),
             description: Joi.string().required(),
             price: Joi.required(),
-            quantity: Joi.required(),
-            category: Joi.required()
+            quantity: Joi.required()
         })
   
         const {error} = schema.validate(fields)
-         
+
         if(error){
             return res.status(400).json({
                 error: error.details[0].message
@@ -182,7 +181,6 @@ exports.productById = (req, res, next, id) => {
 
 
 exports.showProduct = (req, res) => {
-    req.product.photo = undefined
 
     res.json({
         product : req.product

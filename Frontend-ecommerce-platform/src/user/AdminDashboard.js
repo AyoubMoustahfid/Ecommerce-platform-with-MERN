@@ -38,6 +38,10 @@ function AdminDashboard() {
                                     <li className="list-group-item">
                                         <Link className="nav-link" to="/category/create">Create category</Link>
                                     </li>
+
+                                    <li className="list-group-item">
+                                        <Link className="nav-link" to="/category/gestion">Gestion category</Link>
+                                    </li>
                                    
                                     <li className="list-group-item">
                                         <Link className="nav-link" to="/admin/order">View Order</Link>

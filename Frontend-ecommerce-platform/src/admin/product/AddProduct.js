@@ -73,8 +73,6 @@ function AddProduct() {
                "Accept": "application/json",
                "Authorization": `Bearer ${token}`
            },
-        //    formData.user_id = user._id,
-
            body: formData
        })
        .then(res => res.json())
@@ -83,11 +81,11 @@ function AddProduct() {
                toastr.warning(res.error, 'Please Check form !', {
                    positionClass: "toast-bottom-left",
                })
-           }else if(user.priceTotale < 10 && user.productTotal == 10 ){
+           }else if(user.priceTotale < 10 && user.productTotal === 10 ){
             toastr.warning('You have 10 product added', 'Please Check Your price Total !', {
                 positionClass: "toast-bottom-left",
             })
-           }else if(user.priceTotale < 20 && user.productTotal == 20 ){
+           }else if(user.priceTotale < 20 && user.productTotal === 20 ){
             toastr.warning('You have 20 product added', 'Please Check Your price Total !', {
                 positionClass: "toast-bottom-left",
             })

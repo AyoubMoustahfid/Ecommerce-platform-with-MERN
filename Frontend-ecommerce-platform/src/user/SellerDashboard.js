@@ -9,7 +9,7 @@ import {API_URL} from './../config'
 
 function SellerDashboard() {
 
-    const { user: { name, email, role, priceTotale, productTotal, _id } } = isAuthenticated()
+    const { user: { name, email, role, priceTotale, _id } } = isAuthenticated()
    const [seller, setSeller] = useState('')
 
    useEffect(() => {
@@ -22,7 +22,7 @@ function SellerDashboard() {
          })
    }, [])
 
-    const adminInfo = () => {
+    const sellerInfo = () => {
 
         return (
 
@@ -42,22 +42,25 @@ function SellerDashboard() {
     }
 
 
-    const adminLinks = () => {
+    const sellerLinks = () => {
 
         return (
             <div className="card">
-                            <div className="card-body">
-                                <h2 className="card-header">User Links</h2>
-                                <ul className="list-group list-group-flush">
-                                  
-                                    <li className="list-group-item">
-                                        <Link className="nav-link" to="/product/create">Create product</Link>
-                                    </li>
+                <div className="card-body">
+                    <h2 className="card-header">User Links</h2>
+                    <ul className="list-group list-group-flush">
+                    
+                        <li className="list-group-item">
+                            <Link className="nav-link" to="/product/create">Create product</Link>
+                        </li>
 
-                                 
-                                </ul>
-                            </div>
-                        </div>
+                        <li className="list-group-item">
+                            <Link className="nav-link" to="/product/gestion">Gestion product</Link>
+                        </li>
+
+                    </ul>
+                </div>       
+            </div>
         )
     }
 
@@ -71,10 +74,10 @@ function SellerDashboard() {
 
                 <div className="row">
                     <div className="col-md-4">
-                        {adminLinks()}
+                        {sellerLinks()}
                     </div>
                     <div className="col-md-8">
-                        {adminInfo()}
+                        {sellerInfo()}
                        
                     </div>
 

@@ -2,14 +2,14 @@ import React, {useState, useEffect} from 'react'
 import {isAuthenticated, emptyCart} from "./../auth/helpers"
 import {getBrainTreeToken, procesPayment, createOrder} from './ApiCore'
 import DropIn from "braintree-web-drop-in-react";
-import { Link , useHistory} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import toastr from 'toastr';
 import "toastr/build/toastr.css";
  
 
 const Checkout = ({products}) => {
-    let history = useHistory();
+
 
     const [data, setData] = useState({
         braintreeToken: null,
